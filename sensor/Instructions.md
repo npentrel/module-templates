@@ -18,7 +18,7 @@ Inside your copied folder, you have the following files:
 - [.gitignore](./.gitignore): A sensible default `.gitignore` file that ensures that no binaries are added to git.
 - [customsensor.go](./customsensor.go): A template for a custom sensor implementation.
 - [go.mod](./go.mod): Your go dependencies. For more information see [the Go documenation](https://go.dev/doc/tutorial/create-module).
-- [go.sum](./go.sum): Checksums for the exact contents of each dependency at the time it is added to your module. For more information see [the Go documenation](https://go.dev/doc/tutorial/create-module).
+- [go.sum](./go.sum): Checksums for the exact contents of each dependency at the time it is added to your module. For more information see [the Go documentation](https://go.dev/doc/tutorial/create-module).
 - [Makefile](./Makefile): A default makefile with command `make module`, `make bin/customsensor`, `make lint` and more.
 - [README.md](./README.md): A readme template for your module.
 
@@ -57,7 +57,7 @@ Follow the instructions to [Add a local module](https://docs.viam.com/registry/c
 
 #### 7. Upload your module to the registry
 
-To upload the module to the registry, which will allow you to add it to machines without manually moving the files to each machine and specifying the file path, follow the instructions to [UPload your Own Modules to the Viam Registry](https://docs.viam.com/registry/upload/).
+To upload the module to the registry, which will allow you to add it to machines without manually moving the files to each machine and specifying the file path, follow the instructions to [Upload your Own Modules to the Viam Registry](https://docs.viam.com/registry/upload/).
 
 #### 8. Update your Readme
 
