@@ -35,7 +35,7 @@ Update the custom sensor implementation where there are TODOs. Each TODO explain
 - Update the constructor for your sensor as well as the `customSensor` struct.
 - Update the implementation of the `Readings()` and optionally the `DoCommand` functions.
 
-#### 5. Compile and build
+#### 4. Compile and build
 
 If you renamed your package and are building locally you need to specify that your package name should be replaced with the local version of the package:
 
@@ -51,14 +51,25 @@ make updaterdk
 
 Next, run `make bin/customsensor` to build the executable.
 
-#### 6. Test your module locally
+#### 5. Test your module locally
 
-Follow the instructions to [Add a local module](https://docs.viam.com/registry/configure/#add-a-local-module).
+While testing, we recommend that you add the resources you've built with a remote to your machine because it allows you to recompile your code without having to restart your entire machine:
 
-#### 7. Upload your module to the registry
+1. Edit the [`cmd/module/cmd.go` file](./cmd/module/cmd.go). The code there should configure and run a robot with your modular resource configured.
+2. If you haven't already got a machine, create a new machine on [the Viam app](app.viam.com) and follow the setup instructions on the setup tab.
+3. Run `make remote` to compile the [`cmd/module/cmd.go` file](./cmd/module/cmd.go).
+4. Run `./bin/remoteserver my_sensor_name` and specify any additional commandline arguments that your code passes  to the modular resource attributes. This will instantiate a simplified instance of `viam-server` with your modular resource.
+5. On the machine on the Viam app, go to your **Config** tab and to the **Remotes** subtab. Name your remote `remotesensor` and click **Create remote**, then add `localhost:8083` to the **Address** field.
+6. Click **Save config**
+7. Navigate to your **Control** tab on the Viam app. If everything is connected and working, you will see your modular resource and be able to test it.
+
+Alternatively, you can also test your module by adding it as [a local module](https://docs.viam.com/registry/configure/#add-a-local-module).
+If you make changes to your code, you will need to restart `viam-server` for the changes to take effect.
+
+#### 6. Upload your module to the registry
 
 To upload the module to the registry, which will allow you to add it to machines without manually moving the files to each machine and specifying the file path, follow the instructions to [Upload your Own Modules to the Viam Registry](https://docs.viam.com/registry/upload/).
 
-#### 8. Update your Readme
+#### 7. Update your Readme
 
 Update the [README.md](./README.md) file with the configuration instructions for your module.
