@@ -2,7 +2,7 @@
 bin/customcamera: *.go cmd/module/*.go
 	go build -o bin/customcamera cmd/module/cmd.go
 
-remote:
+bin/remoteserver: cmd/remote/*.go
 	go build -o bin/remoteserver cmd/remote/cmd.go
 
 lint:

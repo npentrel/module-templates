@@ -62,9 +62,9 @@ Next, run `make bin/customcamera` to build the executable.
 
 While testing, we recommend that you add the resources you've built with a remote to your machine because it allows you to recompile your code without having to restart your entire machine:
 
-1. Edit the [`cmd/module/cmd.go` file](./cmd/module/cmd.go). The code there should configure and run a robot with your modular resource configured.
+1. Edit the [`cmd/remote/cmd.go` file](./cmd/module/cmd.go). The code there should configure and run a robot with your modular resource configured.
 2. If you haven't already got a machine, create a new machine on [the Viam app](app.viam.com) and follow the setup instructions on the setup tab.
-3. Run `make remote` to compile the [`cmd/module/cmd.go` file](./cmd/module/cmd.go).
+3. Run `make bin/remoteserver` to compile the [`cmd/remote/cmd.go` file](./cmd/remote/cmd.go).
 4. Run `./bin/remoteserver my_camera_name` and specify any additional commandline arguments that your code passes  to the modular resource attributes. This will instantiate a simplified instance of `viam-server` with your modular resource.
 5. On the machine on the Viam app, go to your **Config** tab and to the **Remotes** subtab. Name your remote `remotecamera` and click **Create remote**, then add `localhost:8083` to the **Address** field.
 6. Click **Save config**
