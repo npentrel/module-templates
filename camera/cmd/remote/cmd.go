@@ -7,7 +7,7 @@ import (
 
     "go.viam.com/rdk/module"
 
-    "go.viam.com/rdk/components/sensor"
+    "go.viam.com/rdk/components/camera"
     "go.viam.com/rdk/config"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/resource"
@@ -16,7 +16,7 @@ import (
     rdkutils "go.viam.com/rdk/utils"
     "go.viam.com/utils"
 
-    "github.com/viam-labs/module-templates/sensor"
+    "github.com/viam-labs/module-templates/camera"
 )
 
 func main() {
@@ -42,13 +42,13 @@ func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (er
         Components: []resource.Config{
             {
                 Name:  os.Args[1],
-                API:   sensor.API,
-                Model: customsensor.Model,
+                API:   camera.API,
+                Model: customcamera.Model,
                 Attributes: rdkutils.AttributeMap{
                     "one": arg_2_converted,
                     "two": os.Args[3],
                 },
-                ConvertedAttributes: &customsensor.Config{
+                ConvertedAttributes: &customcamera.Config{
                     ArgumentOne: arg_2_converted,
                     ArgumentTwo: os.Args[3],
                 },

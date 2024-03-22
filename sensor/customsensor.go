@@ -75,7 +75,7 @@ func newCustomSensor(ctx context.Context, deps resource.Dependencies, rawConf re
 
     // TODO: If your custom component has dependencies, perform any checks you need to on them.
 
-    // The Reconfigure() method changes the calues on the customSensor based on the attributes in the component config
+    // The Reconfigure() method changes the values on the customSensor based on the attributes in the component config
     if err := s.Reconfigure(ctx, deps, rawConf); err != nil {
         logger.Error("Error configuring module with ", rawConf)
         return nil, err
@@ -118,7 +118,7 @@ func (s *customSensor) Reconfigure(ctx context.Context, deps resource.Dependenci
     return nil
 }
 
-func (s *customSensor) Readings(context.Context, map[string]interface{}) (map[string]interface{}, error) {
+func (s *customSensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
     // TODO: Obtain and return readings.
     s.logger.Error("Method unimplemented")
     return nil, errUnimplemented
