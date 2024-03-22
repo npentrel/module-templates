@@ -2,6 +2,9 @@
 bin/customsensor: *.go cmd/module/*.go
 	go build -o bin/customsensor cmd/module/cmd.go
 
+bin/remoteserver: cmd/remote/*.go
+	go build -o bin/remoteserver cmd/remote/cmd.go
+
 lint:
 	gofmt -w -s .
 

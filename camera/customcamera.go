@@ -77,7 +77,7 @@ func newCustomCamera(ctx context.Context, deps resource.Dependencies, rawConf re
 
     // TODO: If your custom component has dependencies, perform any checks you need to on them.
 
-    // The Reconfigure() method changes the calues on the customCamera based on the attributes in the component config
+    // The Reconfigure() method changes the values on the customCamera based on the attributes in the component config
     if err := c.Reconfigure(ctx, deps, rawConf); err != nil {
         logger.Error("Error configuring module with ", err)
         return nil, err
