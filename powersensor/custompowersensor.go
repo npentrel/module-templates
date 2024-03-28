@@ -120,31 +120,31 @@ func (s *customPowerSensor) Reconfigure(ctx context.Context, deps resource.Depen
 
 func (s *customPowerSensor) Voltage(ctx context.Context, extra map[string]interface{}) (float64, bool, error) {
     // TODO: Obtain and return readings.
-    s.logger.Error("Method unimplemented")
-    return 0, false, errUnimplemented
+    s.logger.Warn("Voltage method unimplemented")
+    return 0, false, nil
 }
 
 func (s *customPowerSensor) Current(ctx context.Context, extra map[string]interface{}) (float64, bool, error) {
     // TODO: Obtain and return readings.
-    s.logger.Error("Method unimplemented")
-    return 0, false, errUnimplemented
+    s.logger.Warn("Current method unimplemented")
+    return 0, false, nil
 }
 
 func (s *customPowerSensor) Power(ctx context.Context, extra map[string]interface{}) (float64, error) {
     // TODO: Obtain and return readings.
-    s.logger.Error("Method unimplemented")
-    return 0, errUnimplemented
+    s.logger.Warn("Power method unimplemented")
+    return 0, nil
 }
 
 func (s *customPowerSensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
     // TODO: Obtain and return readings.
-    s.logger.Error("Method unimplemented")
-    return nil, errUnimplemented
+    s.logger.Warn("Readings method unimplemented")
+    return map[string]interface{}{"foo": 18, "bar": 23}, nil
 }
 
 // DoCommand is a place to add additional commands to extend the powersensor API. This is optional.
 func (s *customPowerSensor) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
-    s.logger.Error("Method unimplemented")
+    s.logger.Error("DoCommand method unimplemented")
     return nil, errUnimplemented
 }
 

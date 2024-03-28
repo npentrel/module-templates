@@ -1,8 +1,7 @@
-
-bin/custompowersensor: *.go cmd/module/*.go
+bin/custompowersensor: *.go cmd/module/*.go go.*
 	go build -o bin/custompowersensor cmd/module/cmd.go
 
-remote:
+bin/remoteserver: *.go cmd/remote/*.go go.*
 	go build -o bin/remoteserver cmd/remote/cmd.go
 
 lint:

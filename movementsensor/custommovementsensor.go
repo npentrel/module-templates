@@ -1,30 +1,30 @@
-// Package custompowersensor implements a powersensor where all methods are unimplemented.
-// It extends the built-in resource subtype powersensor and implements methods to handle resource construction and attribute configuration.
+// Package custommovementsensor implements a movementsensor where all methods are unimplemented.
+// It extends the built-in resource subtype movementsensor and implements methods to handle resource construction and attribute configuration.
 
-package custompowersensor
+package custommovementsensor
 
 import (
     "context"
     "errors"
 
-    "go.viam.com/rdk/components/powersensor"
+    "go.viam.com/rdk/components/movementsensor"
     "go.viam.com/rdk/logging"
     "go.viam.com/rdk/resource"
 
     "go.viam.com/utils"
 )
 
-// Here is where we define your new model's colon-delimited-triplet (viam-labs:go-module-templates-powersensor:custompowersensor)
-// viam-labs = namespace, go-module-templates-powersensor = repo-name, custompowersensor = model name.
+// Here is where we define your new model's colon-delimited-triplet (viam-labs:go-module-templates-movementsensor:custommovementsensor)
+// viam-labs = namespace, go-module-templates-movementsensor = repo-name, custommovementsensor = model name.
 // TODO: Change model namespace, family (often the repo-name), and model. For more information see https://docs.viam.com/registry/create/#name-your-new-resource-model
 var (
-    Model            = resource.NewModel("viam-labs", "go-module-templates-powersensor", "custompowersensor")
+    Model            = resource.NewModel("viam-labs", "go-module-templates-movementsensor", "custommovementsensor")
     errUnimplemented = errors.New("unimplemented")
 )
 
 func init() {
-    resource.RegisterComponent(powersensor.API, Model,
-        resource.Registration[powersensor.PowerSensor, *Config]{
+    resource.RegisterComponent(movementsensor.API, Model,
+        resource.Registration[movementsensor.PowerSensor, *Config]{
             Constructor: newCustomPowerSensor,
         },
     )
@@ -52,9 +52,9 @@ func (cfg *Config) Validate(path string) ([]string, error) {
     return []string{}, nil
 }
 
-// Constructor for a custom powersensor that creates and returns a customPowerSensor.
+// Constructor for a custom movementsensor that creates and returns a customPowerSensor.
 // TODO: update the customPowerSensor struct and the initialization.
-func newCustomPowerSensor(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (powersensor.PowerSensor, error) {
+func newCustomPowerSensor(ctx context.Context, deps resource.Dependencies, rawConf resource.Config, logger logging.Logger) (movementsensor.PowerSensor, error) {
     // This takes the generic resource.Config passed down from the parent and converts it to the
     // model-specific (aka "native") Config structure defined above, making it easier to directly access attributes.
     conf, err := resource.NativeConfig[*Config](rawConf)
@@ -62,7 +62,7 @@ func newCustomPowerSensor(ctx context.Context, deps resource.Dependencies, rawCo
         return nil, err
     }
 
-    // Create a cancelable context for custom powersensor
+    // Create a cancelable context for custom movementsensor
     cancelCtx, cancelFunc := context.WithCancel(context.Background())
 
     s := &customPowerSensor{
@@ -101,16 +101,16 @@ func (s *customPowerSensor) Name() resource.Name {
     return s.name
 }
 
-// Reconfigures the model. Most models can be reconfigured in place without needing to rebuild. If you need to instead create a new instance of the powersensor, throw a NewMustBuildError.
+// Reconfigures the model. Most models can be reconfigured in place without needing to rebuild. If you need to instead create a new instance of the movementsensor, throw a NewMustBuildError.
 func (s *customPowerSensor) Reconfigure(ctx context.Context, deps resource.Dependencies, conf resource.Config) error {
-    powersensorConfig, err := resource.NativeConfig[*Config](conf)
+    movementsensorConfig, err := resource.NativeConfig[*Config](conf)
     if err != nil {
         s.logger.Warn("Error reconfiguring module with ", err)
         return err
     }
 
-    s.argumentOne = powersensorConfig.ArgumentOne
-    s.argumentTwo = powersensorConfig.ArgumentTwo
+    s.argumentOne = movementsensorConfig.ArgumentOne
+    s.argumentTwo = movementsensorConfig.ArgumentTwo
     s.name = conf.ResourceName()
     s.logger.Info("one is now configured to: ", s.argumentOne)
     s.logger.Info("two is now configured to ", s.argumentTwo)
@@ -142,7 +142,7 @@ func (s *customPowerSensor) Readings(ctx context.Context, extra map[string]inter
     return nil, errUnimplemented
 }
 
-// DoCommand is a place to add additional commands to extend the powersensor API. This is optional.
+// DoCommand is a place to add additional commands to extend the movementsensor API. This is optional.
 func (s *customPowerSensor) DoCommand(ctx context.Context, cmd map[string]interface{}) (map[string]interface{}, error) {
     s.logger.Error("Method unimplemented")
     return nil, errUnimplemented

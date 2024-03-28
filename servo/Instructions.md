@@ -51,20 +51,23 @@ make updaterdk
 
 Next, run `make bin/customservo` to build the executable.
 
-#### 5. Test your module locally
+#### 5. Test your module
 
-While testing, we recommend that you add the resources you've built with a remote to your machine because it allows you to recompile your code without having to restart your entire machine:
 
-1. Edit the [`cmd/module/cmd.go` file](./cmd/module/cmd.go). The code there should configure and run a robot with your modular resource configured.
-2. If you haven't already got a machine, create a new machine on [the Viam app](app.viam.com) and follow the setup instructions on the setup tab.
-3. Run `make remote` to compile the [`cmd/module/cmd.go` file](./cmd/module/cmd.go).
-4. Run `./bin/remoteserver my_servo_name` and specify any additional commandline arguments that your code passes  to the modular resource attributes. This will instantiate a simplified instance of `viam-server` with your modular resource.
-5. On the machine on the Viam app, go to your **Config** tab and to the **Remotes** subtab. Name your remote `remoteservo` and click **Create remote**, then add `localhost:8083` to the **Address** field.
-6. Click **Save config**
-7. Navigate to your **Control** tab on the Viam app. If everything is connected and working, you will see your modular resource and be able to test it.
+##### Test just your servo
 
-Alternatively, you can also test your module by adding it as [a local module](https://docs.viam.com/registry/configure/#add-a-local-module).
-If you make changes to your code, you will need to restart `viam-server` for the changes to take effect.
+The simplest way of testing your servo, is to run a version of `viam-server` with just your servo configured.
+
+1. Edit the [`cmd/remote/cmd.go` file](./cmd/remote/cmd.go). The code there should configure and run a robot with your modular resource configured.
+1. Run `make bin/remoteserver` to compile the [`cmd/remote/cmd.go` file](./cmd/module/cmd.go).
+1. Run `./bin/remoteserver my_servo_name` and specify any additional commandline arguments that your code passes  to the modular resource attributes. This will instantiate a simplified instance of `viam-server` with your modular resource.
+
+##### Test your servo with an operational machine
+
+If you want to test your module with a lot of other resources you can:
+
+- Test your module by following the steps in [Test just your servo](#test-just-your-servo) to deploy your module and use `localhost:8083` to [add it as a remote](https://docs.viam.com/build/configure/parts-and-remotes/#configure-a-remote). If you make changes to your code, you will only need to restart the remote that is running your servo.
+- Test your module by adding it as [a local module](https://docs.viam.com/registry/configure/#add-a-local-module). If you make changes to your code, you will need to restart `viam-server` for the changes to take effect.
 
 #### 6. Upload your module to the registry
 
