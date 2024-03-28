@@ -1,16 +1,16 @@
 
-bin/customsensor: *.go cmd/module/*.go
-	go build -o bin/customsensor cmd/module/cmd.go
+bin/customsensor: *.go cmd/module/*.go go.*
+    go build -o bin/customsensor cmd/module/cmd.go
 
-bin/remoteserver: cmd/remote/*.go
-	go build -o bin/remoteserver cmd/remote/cmd.go
+bin/remoteserver: *.go cmd/remote/*.go go.*
+    go build -o bin/remoteserver cmd/remote/cmd.go
 
 lint:
-	gofmt -w -s .
+    gofmt -w -s .
 
 updaterdk:
-	go get go.viam.com/rdk@latest
-	go mod tidy
+    go get go.viam.com/rdk@latest
+    go mod tidy
 
 module: bin/customsensor
-	tar czf module.tar.gz bin/customsensor
+    tar czf module.tar.gz bin/customsensor

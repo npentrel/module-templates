@@ -120,8 +120,8 @@ func (s *customSensor) Reconfigure(ctx context.Context, deps resource.Dependenci
 
 func (s *customSensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
     // TODO: Obtain and return readings.
-    s.logger.Error("Method unimplemented")
-    return nil, errUnimplemented
+    s.logger.Warn("Returning default values")
+    return map[string]interface{}{"foo": 18, "bar": 23}, nil
 }
 
 // DoCommand is a place to add additional commands to extend the sensor API. This is optional.
