@@ -1,4 +1,4 @@
-module github.com/viam-labs/module-templates/sensor
+module github.com/viam-labs/module-templates/powersensor
 
 go 1.22.0
 
@@ -161,4 +161,4 @@ require (
 	nhooyr.io/websocket v1.8.7 // indirect
 )
 
-replace github.com/viam-labs/module-templates/sensor => ../sensor
+replace github.com/viam-labs/module-templates/powersensor => ../powersensor
