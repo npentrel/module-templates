@@ -1,4 +1,4 @@
-module github.com/viam-labs/module-templates/camera
+module github.com/viam-labs/module-templates-golang/camera
 
 go 1.22.0
 
@@ -149,4 +149,4 @@ require (
 	nhooyr.io/websocket v1.8.7 // indirect
 )
 
-replace github.com/viam-labs/module-templates/camera => ../camera
+replace github.com/viam-labs/module-templates-golang/camera => ../camera

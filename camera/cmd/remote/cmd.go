@@ -16,7 +16,7 @@ import (
     rdkutils "go.viam.com/rdk/utils"
     "go.viam.com/utils"
 
-    "github.com/viam-labs/module-templates/camera"
+    "github.com/viam-labs/module-templates-golang/camera"
 )
 
 func main() {

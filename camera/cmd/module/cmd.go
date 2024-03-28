@@ -12,7 +12,7 @@ import (
     // Import your local package "customcamera"
     // TODO: Update this path if your custom resource is in a different location,
     // or has a different name:
-    "github.com/viam-labs/module-templates/camera"
+    "github.com/viam-labs/module-templates-golang/camera"
 )
 
 func main() {

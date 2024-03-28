@@ -47,7 +47,7 @@ Update the custom camera implementation where there are TODOs. Each TODO explain
 If you renamed your package and are building locally you need to specify that your package name should be replaced with the local version of the package:
 
 ```
-go mod edit -replace github.com/viam-labs/module-templates/camera/customcamera=./customcamera
+go mod edit -replace github.com/viam-labs/module-templates-golang/camera/customcamera=./customcamera
 ```
 
 Then run the following commands to update the `rdk` to the latest build and synchronize and update the project's go dependencies:
